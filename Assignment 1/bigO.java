@@ -12,13 +12,11 @@ public class bigO {
                 jCount += 1;
 
                 for(int k = 0; k<array.length; k++){ //looping through the array
-                    System.out.println("Hello World"); //printing hello world for each iteration
+                    System.out.printf("Hello World, "); //printing hello world for each iteration
                     count += 1;
                 }
             }
         }
-        System.out.println(iCount); //These counters are to show how many times each loops runs
-        System.out.println(jCount); //these numbers coincide with the order of array.length^n
-        System.out.printf("%d\n\n", count); // O(n^3)
+        System.out.printf("%d, %d, %d", iCount, jCount, count); //These counters are to show how many times each loops runs
     }
 }

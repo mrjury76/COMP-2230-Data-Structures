@@ -7,27 +7,27 @@ public class question7 {
         nLogN();
         n2();
         n3();
-        System.out.println(accumulator(10));
+        System.out.println("2n: "+accumulator(10));
     }
 
     private static void logN() {
         int count = 0;
         for(int i = 100; i > 0; i/=2){
             // System.out.println("Hello World");
-            System.out.println(i);
+            // System.out.println(i);
             count++;
         }
-        System.out.println(count); 
+        System.out.println("Log N: "+count); 
     }
 
     private static void constant() {
-        System.out.println("Hello World");
+        System.out.println("Constant: Hello World");
     }
 
     private static void nLogN() {
         int[] array = {9, 5, 2, 7, 3, 6, 1, 8, 4};
         Arrays.sort(array);
-        System.out.println(Arrays.toString(array));
+        System.out.println("N Log N: " +Arrays.toString(array));
     }
 
     private static void n2() {
@@ -38,7 +38,7 @@ public class question7 {
                 count++;
             }
         }
-        System.out.printf("You have %d as the input and %d as the output\n", SIZE, count);
+        System.out.printf("N2: You have %d as the input and %d as the output\n", SIZE, count);
     }
 
     private static void n3() {
@@ -50,7 +50,7 @@ public class question7 {
                 count++;
             }
         }
-        System.out.printf("You have %d as the input and %d as the output\n", SIZE, count);
+        System.out.printf("N3: You have %d as the input and %d as the output\n", SIZE, count);
     }
 
     private static int accumulator(int input) {

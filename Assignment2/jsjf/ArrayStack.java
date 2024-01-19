@@ -3,6 +3,12 @@ package jsjf;
 import jsjf.exceptions.*;
 import java.util.Arrays;
 
+/**
+ * ArrayStack class, which implements the StackADT interface. ArrayStack is a generic stack  
+ * @author Patrick Thrower
+ * @version 1.0
+ */
+
 public class ArrayStack<T> implements StackADT<T> {
 
     private final static int DEFAULT_CAPACITY = 100;
@@ -20,6 +26,10 @@ public class ArrayStack<T> implements StackADT<T> {
         top = 0;
         stack = (T[]) (new Object[initialCapacity]);
     }
+    
+    private void expandCapactity() {
+        stack = Arrays.copyOf(stack, stack.length * 2);
+    }
 
     public void push(T element) {
         if (size() == stack.length)
@@ -27,10 +37,6 @@ public class ArrayStack<T> implements StackADT<T> {
 
         stack[top] = element;
         top++;
-    }
-
-    private void expandCapactity() {
-        stack = Arrays.copyOf(stack, stack.length * 2);
     }
 
     public T pop() throws EmptyCollectionException {
@@ -62,6 +68,25 @@ public class ArrayStack<T> implements StackADT<T> {
     public int size() {
        return top;
     }
+
+    //chat gpt generated toString
+    public String toString() {
+
+        StringBuilder output = new StringBuilder();
+
+        for (int i = 0; i < top; i++) 
+            output.append(stack[i]).append(" ");
+
+        return output.toString();
+    }
+    
+
+    // public String toString() {
+    //     String output = "";
+    //     for(int i = 0; i < stack.length; i++)
+    //         output += String.format("%s, ", stack[i]);
+    //     return output;
+    // }
 
 
 }

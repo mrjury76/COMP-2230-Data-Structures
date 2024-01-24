@@ -2,9 +2,14 @@ package jsjf;
 
 public class DropOutArrayStack<T> extends ArrayStack<T> {
 
+    private final static int DEFAULT_CAPACITY = 100;
     private int top = 0;
     private T[] stack;
 
+    public DropOutArrayStack() {
+        this(DEFAULT_CAPACITY);
+    }
+    
     public DropOutArrayStack(int initialCapacity) {
         top = 0;
         stack = (T[]) (new Object[initialCapacity]);

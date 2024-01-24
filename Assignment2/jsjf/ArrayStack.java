@@ -6,31 +6,33 @@ import java.util.Arrays;
 /**
  * ArrayStack class, which implements the StackADT interface. ArrayStack is a generic stack  
  * @author Patrick Thrower
- * @version 1.0
+ * @version 1.1
  */
 
 public class ArrayStack<T> implements StackADT<T> {
 
     private final static int DEFAULT_CAPACITY = 100;
 
-    private int top;
+    private int top;  //declaring the variables top and stack
     private T[] stack;
 
-    //Creates an empty stack using the default capacity
+    //Creates an empty stack using the default capacity of 100
     public ArrayStack() {
         this(DEFAULT_CAPACITY);
     }
 
-    //Creates an customizable stack with user input
+    //Creates an customizable capacity stack with user input
     public ArrayStack(int initialCapacity){
         top = 0;
         stack = (T[]) (new Object[initialCapacity]);
     }
     
+    //method to double capacity when full
     private void expandCapactity() {
         stack = Arrays.copyOf(stack, stack.length * 2);
     }
 
+    //push method to simply push an element onto the stack
     public void push(T element) {
         if (size() == stack.length)
             expandCapactity();
@@ -39,6 +41,7 @@ public class ArrayStack<T> implements StackADT<T> {
         top++;
     }
 
+    //pop method with exception handling
     public T pop() throws EmptyCollectionException {
         if(isEmpty())
             throw new EmptyCollectionException("stack");
@@ -50,6 +53,7 @@ public class ArrayStack<T> implements StackADT<T> {
         return result;
     }
 
+    //peek method that returns the topmost element
     public T peek() throws EmptyCollectionException {
         if(isEmpty())
             throw new EmptyCollectionException("stack");
@@ -57,6 +61,7 @@ public class ArrayStack<T> implements StackADT<T> {
         return stack[top-1];
     }
 
+    //checks to see if the stack is empty
     public boolean isEmpty() {
         if(top == 0) 
             return true;
@@ -65,28 +70,35 @@ public class ArrayStack<T> implements StackADT<T> {
             return false;
     }
 
+    //returns top which is the same as size
     public int size() {
        return top;
     }
 
-    //chat gpt generated toString
+    //toString that appends every item into a string and returns it
     public String toString() {
-
+        
         StringBuilder output = new StringBuilder();
 
         for (int i = 0; i < top; i++) 
             output.append(stack[i]).append(" ");
-
         return output.toString();
     }
-    
 
-    // public String toString() {
-    //     String output = "";
-    //     for(int i = 0; i < stack.length; i++)
-    //         output += String.format("%s, ", stack[i]);
-    //     return output;
-    // }
+    //getters and setters for top and stack variables
+    public int getTop(){
+        return top;
+    }
 
+    public void setTop(int input){
+        top = input;
+    }
 
+    public T[] getStack() {
+        return stack;
+    }
+
+    public void setStack(T[] input){
+        stack = input;
+    }
 }

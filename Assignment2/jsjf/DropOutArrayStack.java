@@ -1,5 +1,7 @@
 package jsjf;
 
+import jsjf.exceptions.EmptyCollectionException;
+
 public class DropOutArrayStack<T> extends ArrayStack<T> {
 
     public DropOutArrayStack() {
@@ -15,6 +17,26 @@ public class DropOutArrayStack<T> extends ArrayStack<T> {
         int wrappedIndex = (top % stack.length); //assigns the modulus of top and stack length to wrappedIndex
         stack[wrappedIndex] = element; //pushes elements onto the stack using the wrapped index
         top++;  //increments top
+    }
+
+    public T pop() throws EmptyCollectionException {
+        if (isEmpty())
+            throw new EmptyCollectionException("stack");
+
+        top--;
+        int wrappedIndex = (top % stack.length);
+        T result = stack[wrappedIndex];
+        stack[wrappedIndex] = null;
+
+        return result;
+    }
+
+    public T peek() throws EmptyCollectionException {
+        if (isEmpty())
+            throw new EmptyCollectionException("stack");
+
+        int wrappedIndex = (top % stack.length);
+        return stack[wrappedIndex - 1];
     }
 
     //overrides parent's toString to print out full stack

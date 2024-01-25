@@ -13,8 +13,8 @@ public class ArrayStack<T> implements StackADT<T> {
 
     private final static int DEFAULT_CAPACITY = 100;
 
-    private int top;  //declaring the variables top and stack
-    private T[] stack;
+    protected int top;  //declaring the variables top and stack
+    protected T[] stack;
 
     //Creates an empty stack using the default capacity of 100
     public ArrayStack() {
@@ -100,5 +100,9 @@ public class ArrayStack<T> implements StackADT<T> {
 
     public void setStack(T[] input){
         stack = input;
+    }
+
+    public int getLength(){
+        return stack.length;
     }
 }

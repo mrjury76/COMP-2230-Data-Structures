@@ -36,7 +36,6 @@ public class ArrayStack<T> implements StackADT<T> {
     public void push(T element) {
         if (size() == stack.length)
             expandCapactity();
-
         stack[top] = element;
         top++;
     }
@@ -45,7 +44,6 @@ public class ArrayStack<T> implements StackADT<T> {
     public T pop() throws EmptyCollectionException {
         if(isEmpty())
             throw new EmptyCollectionException("stack");
-
         top--;
         T result = stack[top];
         stack[top] = null;

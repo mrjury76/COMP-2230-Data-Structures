@@ -1,6 +1,7 @@
 package jsjf;
 
 import jsjf.exceptions.EmptyCollectionException;
+import jsjf.ArrayStack.*;
 
 public class LinkedStack<T> implements StackADT<T> {
 

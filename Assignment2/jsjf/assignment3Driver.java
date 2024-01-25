@@ -5,7 +5,7 @@ public class assignment3Driver {
     public static void main(String[] args) {
 
         // Create a linked stack
-        LinkedDropOutStack<Integer> linkedStack = new LinkedDropOutStack<Integer>();
+        LinkedDropOutStack<Integer> linkedStack = new LinkedDropOutStack<Integer>(10);
 
         // Add elements
         for(int i = 0; i < linkedStack.limit; i++) {  //pushes the limit amount of elements onto the stack

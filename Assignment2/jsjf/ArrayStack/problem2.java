@@ -1,4 +1,4 @@
-package jsjf;
+package jsjf.ArrayStack;
 
 /**
  * This is the program to test problem 2 in assignment 2

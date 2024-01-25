@@ -1,4 +1,4 @@
-package jsjf;
+package jsjf.ArrayStack;
 
 public class problem1<T> extends ArrayStack<T>
 {

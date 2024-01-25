@@ -1,4 +1,4 @@
-package jsjf;
+package jsjf.ArrayStack;
 
 import jsjf.exceptions.*;
 import java.util.Arrays;

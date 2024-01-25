@@ -1,4 +1,4 @@
-package jsjf;
+package jsjf.ArrayStack;
 
 public interface StackADT<T> {
 

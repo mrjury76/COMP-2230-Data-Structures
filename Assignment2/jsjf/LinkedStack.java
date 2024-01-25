@@ -4,20 +4,20 @@ import jsjf.exceptions.EmptyCollectionException;
 
 public class LinkedStack<T> implements StackADT<T> {
 
-    private int count;
-    private LinearNode<T> top;
+    protected int count;
+    protected LinearNode<T> top;
 
-    public LinkedStack(){
+    public LinkedStack(){  //default constructor. sets count to 0 and top to null
         count = 0;
         top = null;
     }
 
-    public void push(T element) {
-        LinearNode<T> temp = new LinearNode<T>(element);
+    public void push(T element) {  //push method to add elements to the top of the stack
+        LinearNode<T> temp = new LinearNode<T>(element);  //creates a new node with the element
 
-        temp.setNext(top);
-        top = temp;
-        count++;
+        temp.setNext(top);  //sets the temp node to the current top
+        top = temp;  //the reference of the temp node is stored in top
+        count++;  //increment count
     }
 
     public T pop() {
@@ -35,7 +35,6 @@ public class LinkedStack<T> implements StackADT<T> {
         if(isEmpty()) {
             throw new EmptyCollectionException("stack");
         }
-
         return top.getElement();
     }
 

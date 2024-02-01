@@ -22,17 +22,17 @@ public class LinkedStack<T> implements StackADT<T> {
     }
 
     public T pop() {
-        if(isEmpty()) {
+        if(isEmpty()) { //throws exception should the stack be empty
             throw new EmptyCollectionException("stack");
         }
 
-        T result = top.getElement();
-        top = top.getNext();
+        T result = top.getElement();  //assigns the element at the top node
+        top = top.getNext();  //assigns top to the next node in the list
         count--;
         return result;
     }
 
-    public T peek() {
+    public T peek() {  //simpply returns the element in the top of the stack
         if(isEmpty()) {
             throw new EmptyCollectionException("stack");
         }

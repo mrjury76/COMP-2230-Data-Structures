@@ -14,10 +14,10 @@ public class LinkedStack<T> implements StackADT<T> {
     }
 
     public void push(T element) {  //push method to add elements to the top of the stack
-        LinearNode<T> temp = new LinearNode<T>(element);  //creates a new node with the element
+        LinearNode<T> newNode = new LinearNode<T>(element);  //creates a new node with the element
 
-        temp.setNext(top);  //sets the temp node to the current top
-        top = temp;  //the reference of the temp node is stored in top
+        newNode.setNext(top);  //sets the new node "next" to the current top
+        top = newNode;  //the reference of the new node is stored in top
         count++;  //increment count
     }
 

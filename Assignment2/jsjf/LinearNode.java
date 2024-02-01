@@ -30,4 +30,8 @@ public class LinearNode<T> {
     public void setElement(T elem) {  //method to set element
         element = elem;
     }
+
+    public String toString() {
+        return element.toString();
+    }
 }

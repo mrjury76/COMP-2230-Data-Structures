@@ -7,13 +7,21 @@ public class assignment3Driver {
         // Create a linked stack
         LinkedDropOutStack<Integer> linkedStack = new LinkedDropOutStack<Integer>(10);
 
-        // Add elements
-        for(int i = 0; i < linkedStack.limit; i++) {  //pushes the limit amount of elements onto the stack
+        //checking the is empty method
+        System.out.println("Empty: " + linkedStack.isEmpty());
+
+        //pushes the limit amount of elements onto the stack
+        for(int i = 0; i < linkedStack.limit; i++) {
             linkedStack.push(i);
         }
         
+        //pushes 2 more elements onto the stack to check the circular reference
         linkedStack.push(21);
         linkedStack.push(22);
+        linkedStack.push(23);
+        linkedStack.push(24);
+        linkedStack.push(25);
+        linkedStack.push(26);
 
         // Print size
         System.out.println("Size: " + linkedStack.size());
@@ -22,17 +30,12 @@ public class assignment3Driver {
         System.out.println("Contents: " + linkedStack);
 
         // Remove and print top element
-        int top = linkedStack.pop();
-        System.out.println("Removed " + top);
+//           int top = linkedStack.pop();
+//           System.out.println("Removed " + top);
 
         // Check if empty
-        if(linkedStack.isEmpty()) {
-            System.out.println("Empty");
-        } else {
-            System.out.println("Not empty");
-        }
-
-        }
+        System.out.println(linkedStack.isEmpty() ? "Empty" : "Not empty");
     
     }
+}
 

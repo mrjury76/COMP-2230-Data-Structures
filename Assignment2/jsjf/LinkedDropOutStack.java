@@ -11,8 +11,9 @@ public class LinkedDropOutStack<T> extends LinkedStack<T> {
         this.limit = input;
     }
 
+    //push method that checks if its empty an
     @Override
-    public void push(T element) {
+    public void push(T element) { 
         LinearNode<T> newNode = new LinearNode<T>(element);
         
         //if else block to check for the first push when the stack is empty, else push like normal
@@ -20,28 +21,20 @@ public class LinkedDropOutStack<T> extends LinkedStack<T> {
             top = bottom = newNode; // For the first element, top and bottom are the same
         } else {
             newNode.setNext(top); // Link new node to the previous top
-            top = newNode; // Update top to the new node
+            top = newNode; // make the new node the top
         }
         
         // If the stack is full, remove the bottom element
-        if(size() >= limit) {   //checks is the size has reached the limit
-          removeBottom();
+        if(size() >= limit) {
+            LinearNode<T> temp = top;
+            while(temp.getNext() != bottom) {  //while loop to work its way down to the 2nd most bottom element
+                temp = temp.getNext();
+            }
+            bottom = temp;  //assigns the 2nd most bottom node to be the new bottom and sets this node's next to be null
+            bottom.setNext(null);
         } else {
-          super.count++; // Increase super.count if not removing the bottom element
+            super.count++;  //only increases the counter if the size is not at the limited size yet.
         }
     }
-
-
-    public void removeBottom() {
-      if (!isEmpty()) {
-          System.out.println("\tENTERING the size >= limit if statement");
-  
-          LinearNode<T> temp = bottom.getNext(); // Gets the "next" node of bottom
-          bottom = null; // Remove reference to the current bottom
-          bottom = temp; // Reassign the next node as the new bottom
-  
-          super.count--; // Decrement the count of elements
-      }
-  }
   
 }

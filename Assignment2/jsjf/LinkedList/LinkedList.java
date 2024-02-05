@@ -10,7 +10,7 @@ import java.util.*;
  * @author Java Foundations
  * @version 4.0
  */
-public abstract class LinkedList<T> implements ListADT<T>, Iterable<T> {
+public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
     
     protected int count;
     protected LinearNode<T> head, tail;

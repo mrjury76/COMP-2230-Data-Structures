@@ -1,9 +1,10 @@
 package jsjf.LinkedList;
 
-import java.util.Iterator;
+// import java.util.ConcurrentModificationException;
+import java.util.*;
 import jsjf.LinearNode;
 
-public class LinkedListIterator<T> implements Iterator<T> {
+public class LinkedListIterator<T> extends LinkedList<T> implements Iterator<T>  {
     private int iteratorModCount; // the number of elements in the collection
     private LinearNode<T> current; // the current position
 

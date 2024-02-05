@@ -166,9 +166,9 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      *
      * @return an iterator over the elements of the list
      */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    // @SuppressWarnings({ "unchecked", "rawtypes" })
     public Iterator<T> iterator() {
-        return new LinkedListIterator();
+        return new LinkedListIterator<T>();
     }
 
 }

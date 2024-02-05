@@ -102,8 +102,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public T first() throws EmptyCollectionException {
-        // To be completed as a Programming Project
-        return null; // temp
+        return tail.getElement();
     }
 
     /**
@@ -113,8 +112,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public T last() throws EmptyCollectionException {
-        // To be completed as a Programming Project
-        return null; // temp
+        return head.getElement();
     }
 
     /**
@@ -127,7 +125,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public boolean contains(T targetElement) throws EmptyCollectionException {
-        // To be completed as a Programming Project
+        iterator();//implement the iterator add iterate throught the list and compare to targetElement
         return true; // temp
     }
 
@@ -137,8 +135,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
-        // To be completed as a Programming Project
-        return true; // temp
+            return size() == 0;
     }
 
     /**
@@ -147,8 +144,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @return the number of elements in the list
      */
     public int size() {
-        // To be completed as a Programming Project
-        return 0; // temp
+        return count;
     }
 
     /**
@@ -157,8 +153,19 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @return a string representation of the list
      */
     public String toString() {
-        // To be completed as a Programming Project
-        return ""; // temp
+        StringBuilder output = new StringBuilder("[");
+        LinearNode<T> current = head;
+
+        while(current != null) {
+            output.append(current.getElement());
+            current = current.getNext();
+            if(current != null) {
+                output.append(", ");
+            }
+        }
+
+        output.append("]");
+        return output.toString();
     }
 
     /**

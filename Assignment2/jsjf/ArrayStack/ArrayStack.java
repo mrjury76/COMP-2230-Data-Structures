@@ -22,6 +22,7 @@ public class ArrayStack<T> implements StackADT<T> {
     }
 
     //Creates an customizable capacity stack with user input
+    @SuppressWarnings("unchecked")
     public ArrayStack(int initialCapacity){
         top = 0;
         stack = (T[]) (new Object[initialCapacity]);

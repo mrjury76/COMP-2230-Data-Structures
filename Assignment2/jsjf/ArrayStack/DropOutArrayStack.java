@@ -2,6 +2,17 @@ package jsjf.ArrayStack;
 
 import jsjf.exceptions.EmptyCollectionException;
 
+/**
+ * The DropOutArrayStack class represents a stack data structure implemented using an array
+ * with a fixed capacity. When the stack is full and a new element is pushed, the oldest
+ * element in the stack is dropped (removed). It follows the Last-In-First-Out (LIFO)
+ * principle, where elements are added and popped from the top of the stack.
+ *
+ * @param <T> the type of elements stored in the stack
+ * @version 1.2
+ * @author Patrick Thrower
+ */
+
 public class DropOutArrayStack<T> extends ArrayStack<T> {
 
     public DropOutArrayStack() {

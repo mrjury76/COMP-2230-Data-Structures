@@ -4,10 +4,15 @@ import jsjf.exceptions.*;
 import java.util.Arrays;
 
 /**
- * ArrayStack class, which implements the StackADT interface. ArrayStack is a generic stack  
+ * The ArrayStack class represents a stack data structure implemented using an array.
+ * It follows the Last-In-First-Out (LIFO) principle, where elements are added and removed
+ * from the top of the stack. 
+ * 
  * @author Patrick Thrower
  * @version 1.1
+ * @param <T> the type of elements stored in the stack
  */
+
 
 public class ArrayStack<T> implements StackADT<T> {
 

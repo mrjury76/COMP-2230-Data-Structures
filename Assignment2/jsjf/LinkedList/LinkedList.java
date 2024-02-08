@@ -10,7 +10,7 @@ import java.util.*;
  * @author Java Foundations
  * @version 4.0
  */
-public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
+public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
     
     protected int count;
     protected LinearNode<T> head, tail;
@@ -33,8 +33,18 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public T removeFirst() throws EmptyCollectionException {
-        // To be completed as a Programming Project
-        return null; // temp
+        //find the first element in the stack, and remove. like pop?
+        return remove(head.getElement());
+        // if(isEmpty())
+        //     throw new EmptyCollectionException("Linked List");
+        // else {
+        // LinearNode<T> output;
+        // output = head;
+        // head.getNext();
+        // return output.getElement(); 
+
+        
+        // }
     }
 
     /**
@@ -45,8 +55,15 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public T removeLast() throws EmptyCollectionException {
-        // To be completed as a Programming Project
-        return null; // temp
+        return remove(tail.getElement());
+        // if(isEmpty())
+        //     throw new EmptyCollectionException("Linked List");
+        // else {
+        //     LinearNode<T> output;
+        //     output = tail;
+        //     tail = tail.getNext();
+        //     return output.getElement();
+        // }
     }
 
     /**
@@ -102,7 +119,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public T first() throws EmptyCollectionException {
-        return tail.getElement();
+        return head.getElement();
     }
 
     /**
@@ -112,7 +129,7 @@ public abstract class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
      * @throws EmptyCollectionException if the list is empty
      */
     public T last() throws EmptyCollectionException {
-        return head.getElement();
+        return tail.getElement();
     }
 
     /**

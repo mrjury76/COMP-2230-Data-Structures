@@ -10,7 +10,7 @@ import java.util.*;
  * @author Java Foundations
  * @version 4.0
  */
-public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */ {
+public abstract class LinkedList<T> implements ListADT<T> {
     
     protected int count;
     protected LinearNode<T> head, tail;
@@ -33,18 +33,7 @@ public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */
      * @throws EmptyCollectionException if the list is empty
      */
     public T removeFirst() throws EmptyCollectionException {
-        //find the first element in the stack, and remove. like pop?
         return remove(head.getElement());
-        // if(isEmpty())
-        //     throw new EmptyCollectionException("Linked List");
-        // else {
-        // LinearNode<T> output;
-        // output = head;
-        // head.getNext();
-        // return output.getElement(); 
-
-        
-        // }
     }
 
     /**
@@ -56,14 +45,6 @@ public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */
      */
     public T removeLast() throws EmptyCollectionException {
         return remove(tail.getElement());
-        // if(isEmpty())
-        //     throw new EmptyCollectionException("Linked List");
-        // else {
-        //     LinearNode<T> output;
-        //     output = tail;
-        //     tail = tail.getNext();
-        //     return output.getElement();
-        // }
     }
 
     /**
@@ -142,9 +123,16 @@ public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */
      * @throws EmptyCollectionException if the list is empty
      */
     public boolean contains(T targetElement) throws EmptyCollectionException {
-        iterator();//implement the iterator add iterate throught the list and compare to targetElement
-        return true; // temp
+        Iterator<T> iterator = iterator();
+        while (iterator.hasNext()) {
+            T element = iterator.next();
+            if (element.equals(targetElement)) {
+                return true; // Element found
+            }
+        }
+        return false; // Element not found
     }
+    
 
     /**
      * Returns true if this list is empty and false otherwise.
@@ -152,7 +140,7 @@ public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
-            return size() == 0;
+            return head == null ;
     }
 
     /**
@@ -190,9 +178,94 @@ public /*abstract*/ class LinkedList<T> implements ListADT<T> /*, Iterable<T> */
      *
      * @return an iterator over the elements of the list
      */
-    // @SuppressWarnings({ "unchecked", "rawtypes" })
     public Iterator<T> iterator() {
-        return new LinkedListIterator<T>();
+        return new LinkedListIterator();
     }
 
+
+    private class LinkedListIterator extends LinkedList<T> implements Iterator<T>  {
+        private int iteratorModCount; // the number of elements in the collection
+        private LinearNode<T> current; // the current position
+    
+        /**
+         * Sets up this iterator using the specified items.
+         *
+         * @param collection the collection the iterator will move over
+         * @param size       the integer size of the collection
+         */
+        public LinkedListIterator() {
+            current = head;
+            iteratorModCount = modCount;
+        }
+    
+        /**
+         * Returns true if this iterator has at least one more element to deliver in the iteration.
+         *
+         * @return true if this iterator has at least one more element to deliver in the iteration
+         * @throws ConcurrentModificationException if the collection has changed while the iterator is in use
+         */
+        public boolean hasNext() throws ConcurrentModificationException {
+            if (iteratorModCount != modCount)
+                throw new ConcurrentModificationException();
+    
+            return (current != null);
+        }
+    
+        /**
+         * Returns the next element in the iteration. If there are no more elements in this iteration,
+         * a NoSuchElementException is thrown.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iterator is empty
+         */
+        public T next() throws ConcurrentModificationException {
+            if (!hasNext())
+                throw new NoSuchElementException();
+    
+            T result = current.getElement();
+            current = current.getNext();
+            return result;
+        }
+    
+        /**
+         * The remove operation is not supported.
+         *
+         * @throws UnsupportedOperationException if the remove operation is called
+         */
+        public void remove() throws UnsupportedOperationException {
+            throw new UnsupportedOperationException();
+        }
+    
+        public int getCount() {
+            return count;
+        }
+    
+        public void setCount(int count) {
+            this.count = count;
+        }
+    
+        public LinearNode<T> getHead() {
+            return head;
+        }
+    
+        public void setHead(LinearNode<T> head) {
+            this.head = head;
+        }
+    
+        public LinearNode<T> getTail() {
+            return tail;
+        }
+    
+        public void setTail(LinearNode<T> tail) {
+            this.tail = tail;
+        }
+    
+        public int getModCount() {
+            return modCount;
+        }
+    
+        public void setModCount(int modCount) {
+            this.modCount = modCount;
+        }
+    }
 }

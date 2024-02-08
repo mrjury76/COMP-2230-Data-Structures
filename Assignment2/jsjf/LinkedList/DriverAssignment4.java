@@ -7,13 +7,11 @@ public class DriverAssignment4 {
         OrderedLinkedList<Integer> linkedlist = new OrderedLinkedList<Integer>();
 
         System.out.println("Is empty?: " + linkedlist.isEmpty());
-        for(int i = 3; i >= 0; i--) {
+        for(int i = 3; i >= 0; i--) 
             linkedlist.add(i);
-        }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 3; i++)
             linkedlist.add(i+20);
-        }
 
         System.out.println(linkedlist.toString());
         System.out.println("Removing last node: " + linkedlist.removeLast());
@@ -29,7 +27,7 @@ public class DriverAssignment4 {
         System.out.println(linkedlist.toString());
         System.out.println("Is empty?: " + linkedlist.isEmpty());
         System.out.println("Size: " + linkedlist.size());
-        System.out.println("first item in list: " + linkedlist.first() + "last item in list: " + linkedlist.last());
+        System.out.println("first item in list: " + linkedlist.first() + ". last item in list: " + linkedlist.last());
         System.out.printf("Printing the count variable: %d \tAnd the modCount variable: %d", linkedlist.count, linkedlist.modCount);
         
     }

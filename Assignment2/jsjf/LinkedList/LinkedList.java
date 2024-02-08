@@ -182,7 +182,13 @@ public abstract class LinkedList<T> implements ListADT<T> {
         return new LinkedListIterator();
     }
 
-
+    /**
+    * The LinkedListIterator class represents an iterator over the elements of a linked list.
+    * It allows sequential access to each element in the list.
+    * This iterator is used internally by the LinkedList class to iterate over its elements.
+    * 
+    * @param <T> the type of elements stored in the linked list
+    */
     private class LinkedListIterator extends LinkedList<T> implements Iterator<T>  {
         private int iteratorModCount; // the number of elements in the collection
         private LinearNode<T> current; // the current position

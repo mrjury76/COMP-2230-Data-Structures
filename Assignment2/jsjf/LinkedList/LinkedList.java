@@ -7,8 +7,8 @@ import java.util.*;
 /**
  * LinkedList represents a linked implementation of a list.
  *
- * @author Java Foundations
- * @version 4.0
+ * @author Patrick Thrower
+ * @version 2.3
  */
 public abstract class LinkedList<T> implements ListADT<T> {
     

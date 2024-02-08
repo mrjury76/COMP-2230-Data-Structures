@@ -20,7 +20,7 @@ public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> im
     */
     @Override
     public void add(T element) {
-            LinearNode<T> newNode = new LinearNode<>(element);
+        LinearNode<T> newNode = new LinearNode<>(element);
 
         //inserts element into the front of the list if the stack is empty and thats where the node 
         //should go or if the element is smaller than whats in the head already

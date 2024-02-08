@@ -1,7 +1,6 @@
 package jsjf.LinkedList;
 
 import jsjf.LinearNode;
-import java.util.*;
 
 /**
  * This is my linked list child, ordered linked list.
@@ -12,7 +11,7 @@ import java.util.*;
  * @param <T>
  */
 
-public class OrderedLinkedList<T> extends LinkedList<T> implements OrderedListADT<T>, Comparable<OrderedLinkedList<T>>{
+public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> implements OrderedListADT<T>, Comparable<OrderedLinkedList<T>> {
 
      /**
     * Adds the specified element to this list at the proper location
@@ -23,15 +22,16 @@ public class OrderedLinkedList<T> extends LinkedList<T> implements OrderedListAD
     public void add(T element) {
             LinearNode<T> newNode = new LinearNode<>(element);
 
+        //inserts element into the front of the list if the stack is empty and thats where the node 
+        //should go or if the element is smaller than whats in the head already
         if (isEmpty() || element.compareTo(head.getElement()) <= 0) {
-            // Insert at the beginning of the list
             newNode.setNext(head);
             head = newNode;
             if (tail == null) {
                 tail = newNode;
-            }
+            }  
+        //else we will compare the element to other node to see where it will be inserted into.
         } else {
-            // Traverse the list to find the appropriate position
             LinearNode<T> current = head;
             LinearNode<T> previous = null;
 
@@ -49,6 +49,8 @@ public class OrderedLinkedList<T> extends LinkedList<T> implements OrderedListAD
                 tail = newNode;
             }
         }
+        super.count++;
+        super.modCount++;
     }
 
     @Override

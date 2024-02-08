@@ -7,14 +7,18 @@ import jsjf.LinearNode;
  * this class serves to implement the OrderedListADT, which is to implement
  * the add function to the LinkedList class.
  * @author Patrick Thrower
- * @version 1.0
+ * @version 1.5
  * @param <T>
  */
 
 public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> implements OrderedListADT<T>{
 
      /**
-    * Adds the specified element to this list at the proper location
+    * Adds the specified element to the front of the list if the stack is empty or when the input element is smaller or equal to 
+    * whats in the head already. Else, the add function will iterate through the list checking if the next node is greater than it, 
+    * and inserts it into the list, reassigning the pointers to include it in the list. 
+    * The tail pointer will be reassigned when the stack is empty and the first node is added, 
+    * or the element is added at the very end, then the tail pointer will be reassigned to point to the new tail. 
     *
     * @param element the element to be added to this list
     */
@@ -22,15 +26,11 @@ public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> im
     public void add(T element) {
         LinearNode<T> newNode = new LinearNode<>(element);
 
-        //inserts element into the front of the list if the stack is empty and thats where the node 
-        //should go or if the element is smaller than whats in the head already
         if (isEmpty() || element.compareTo(head.getElement()) <= 0) {
             newNode.setNext(head);
             head = newNode;
-            if (tail == null) {
+            if (tail == null)
                 tail = newNode;
-            }  
-        //else we will compare the element to other node to see where it will be inserted into.
         } else {
             LinearNode<T> current = head;
             LinearNode<T> previous = null;
@@ -39,18 +39,13 @@ public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> im
                 previous = current;
                 current = current.getNext();
             }
-
-            // Insert the new node at the appropriate position
             newNode.setNext(current);
             previous.setNext(newNode);
 
-            // Update the tail pointer if necessary
-            if (current == null) {
+            if (current == null)
                 tail = newNode;
-            }
         }
         super.count++;
         super.modCount++;
     }
-    
 }

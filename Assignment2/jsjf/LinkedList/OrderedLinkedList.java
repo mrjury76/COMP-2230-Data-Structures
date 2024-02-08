@@ -4,14 +4,14 @@ import jsjf.LinearNode;
 
 /**
  * This is my linked list child, ordered linked list.
- * this class serves to implement the orderedListADT, whick is to implemet
- * the add function to the linkedList class.
+ * this class serves to implement the OrderedListADT, which is to implement
+ * the add function to the LinkedList class.
  * @author Patrick Thrower
  * @version 1.0
  * @param <T>
  */
 
-public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> implements OrderedListADT<T>, Comparable<OrderedLinkedList<T>> {
+public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> implements OrderedListADT<T>{
 
      /**
     * Adds the specified element to this list at the proper location
@@ -52,10 +52,5 @@ public class OrderedLinkedList<T extends Comparable<T>> extends LinkedList<T> im
         super.count++;
         super.modCount++;
     }
-
-    @Override
-    public int compareTo(OrderedLinkedList<T> o) {
-        return 0;
-    }   
     
 }

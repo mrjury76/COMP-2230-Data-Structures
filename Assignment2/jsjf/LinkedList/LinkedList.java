@@ -140,7 +140,7 @@ public abstract class LinkedList<T> implements ListADT<T> {
      * @return true if the list is empty, false otherwise
      */
     public boolean isEmpty() {
-            return head == null ;
+            return head == null;
     }
 
     /**

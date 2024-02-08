@@ -159,19 +159,23 @@ public abstract class LinkedList<T> implements ListADT<T> {
      */
     public String toString() {
         StringBuilder output = new StringBuilder("[");
-        LinearNode<T> current = head;
-
-        while(current != null) {
-            output.append(current.getElement());
-            current = current.getNext();
-            if(current != null) {
+        Iterator<T> iterator = iterator();
+        boolean firstElement = true;
+    
+        while (iterator.hasNext()) {
+            if (!firstElement) 
                 output.append(", ");
-            }
+            else 
+                firstElement = false;
+            
+            T element = iterator.next();
+            output.append(element);
         }
-
+    
         output.append("]");
         return output.toString();
     }
+    
 
     /**
      * Returns an iterator for the elements in this list.
@@ -189,10 +193,11 @@ public abstract class LinkedList<T> implements ListADT<T> {
     * 
     * @param <T> the type of elements stored in the linked list
     */
-    private class LinkedListIterator extends LinkedList<T> implements Iterator<T>  {
+
+    private class LinkedListIterator implements Iterator<T> {
         private int iteratorModCount; // the number of elements in the collection
         private LinearNode<T> current; // the current position
-    
+
         /**
          * Sets up this iterator using the specified items.
          *
@@ -203,23 +208,27 @@ public abstract class LinkedList<T> implements ListADT<T> {
             current = head;
             iteratorModCount = modCount;
         }
-    
+
         /**
-         * Returns true if this iterator has at least one more element to deliver in the iteration.
+         * Returns true if this iterator has at least one more element
+         * to deliver in the iteration.
          *
-         * @return true if this iterator has at least one more element to deliver in the iteration
-         * @throws ConcurrentModificationException if the collection has changed while the iterator is in use
+         * @return true if this iterator has at least one more element to deliver
+         * in the iteration
+         * @throws ConcurrentModificationException if the collection has changed
+         *                                         while the iterator is in use
          */
         public boolean hasNext() throws ConcurrentModificationException {
             if (iteratorModCount != modCount)
                 throw new ConcurrentModificationException();
-    
+
             return (current != null);
         }
-    
+
         /**
-         * Returns the next element in the iteration. If there are no more elements in this iteration,
-         * a NoSuchElementException is thrown.
+         * Returns the next element in the iteration. If there are no
+         * more elements in this iteration, a NoSuchElementException is
+         * thrown.
          *
          * @return the next element in the iteration
          * @throws NoSuchElementException if the iterator is empty
@@ -227,51 +236,20 @@ public abstract class LinkedList<T> implements ListADT<T> {
         public T next() throws ConcurrentModificationException {
             if (!hasNext())
                 throw new NoSuchElementException();
-    
+
             T result = current.getElement();
             current = current.getNext();
             return result;
         }
-    
+
         /**
          * The remove operation is not supported.
          *
          * @throws UnsupportedOperationException if the remove operation is called
          */
         public void remove() throws UnsupportedOperationException {
-            throw new UnsupportedOperationException();
-        }
-    
-        public int getCount() {
-            return count;
-        }
-    
-        public void setCount(int count) {
-            this.count = count;
-        }
-    
-        public LinearNode<T> getHead() {
-            return head;
-        }
-    
-        public void setHead(LinearNode<T> head) {
-            this.head = head;
-        }
-    
-        public LinearNode<T> getTail() {
-            return tail;
-        }
-    
-        public void setTail(LinearNode<T> tail) {
-            this.tail = tail;
-        }
-    
-        public int getModCount() {
-            return modCount;
-        }
-    
-        public void setModCount(int modCount) {
-            this.modCount = modCount;
+        throw new UnsupportedOperationException();
         }
     }
+
 }

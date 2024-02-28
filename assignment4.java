@@ -25,6 +25,7 @@ public class assignment4 {
             String output = String.format("The target element %d has%s been found. %s", target, index >= 0 ? "": " NOT", index >= 0? "Yay!" : ":(");
             System.out.println(output);
         }
+        scan.close();
     }
 
 }

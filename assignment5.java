@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class assignment4 {
+public class assignment5 {
 
     public static void main(String[] args) {
         
@@ -10,7 +10,7 @@ public class assignment4 {
         
         // Generate a random array of 40 integers
         for (int i = 0; i < 40; i++) {
-            array[i] = rand.nextInt(999 + 1); // rand.nextInt(999) generates numbers from 1 to 999
+            array[i] = rand.nextInt(999 + 1); // Generates numbers from 1 to 999
         }
         System.out.println("Array before being sorted: " + Arrays.toString(array));
 
@@ -19,7 +19,7 @@ public class assignment4 {
         
         System.out.println("\n\nArray after being sorted: " + Arrays.toString(array));
         
-        // Example of binary search
+        // Asks user 3 times for an input and searches the list for that target
         for (int i = 0; i < 3; i++) {
             System.out.println("please enter a searchable value");
             Integer target = scan.nextInt(); // Example target value

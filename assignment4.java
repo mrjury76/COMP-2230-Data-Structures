@@ -6,15 +6,18 @@ public class assignment4 {
         
         Random rand = new Random();
         Scanner scan = new Scanner(System.in);
-        Integer[] array = new Integer[40]; // Using Integer instead of int to make it compatible with generics
+        Integer[] array = new Integer[40];
         
+        // Generate a random array of 40 integers
         for (int i = 0; i < 40; i++) {
-            array[i] = rand.nextInt(999 + 1); // rand.nextInt(1000) generates numbers from 0 to 999
+            array[i] = rand.nextInt(999 + 1); // rand.nextInt(999) generates numbers from 1 to 999
         }
+        System.out.println("Array before being sorted: " + Arrays.toString(array));
+
+        // Sort the array
+        Arrays.sort(array);
         
-        Arrays.sort(array); // Sort the array before binary search
-        
-        System.out.println(Arrays.toString(array));
+        System.out.println("\n\nArray after being sorted: " + Arrays.toString(array));
         
         // Example of binary search
         for (int i = 0; i < 3; i++) {

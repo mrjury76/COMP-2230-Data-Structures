@@ -21,8 +21,8 @@ public class BinaryArrayTree {
         if (size >= DEFAULT_CAPACITY) {
             System.out.println("Array is full, please make more room");
         }
-        else {
-            this.binaryArrayTree[size + 1] = item;    
+        else {. //index starts at 0 and adds elements as a complete tree would.
+            binaryArrayTree[size] = item;    
             size++;
         }
 
@@ -33,7 +33,7 @@ public class BinaryArrayTree {
         for(int i = 0; i <= binaryArrayTree.length(); i++) {
             output = binaryArrayTree.getElement(i);
         }
-        return output;
+        return Arrays.toString();
     }
 
     public int getElement(int output) {

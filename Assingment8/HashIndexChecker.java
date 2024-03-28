@@ -1,6 +1,5 @@
 public class HashIndexChecker {
-    int output;
-    int[] array;
+    private int[] array;
 
     public HashIndexChecker(int capacity) {
         this.array = new int[capacity];

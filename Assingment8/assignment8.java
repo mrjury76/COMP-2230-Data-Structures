@@ -14,6 +14,7 @@ public class assignment8 {
         int index = element % array.length;
         while(array[index] != 0) {
             index = ((index + 1) % array.length);
+            collisionCounter++;
         }
         array[index] = element;
     }

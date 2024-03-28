@@ -1,42 +1,68 @@
-import java.util.Arrays;
 
 public class BinaryArrayTree {
-    int limit = (int) Math.pow(2, 6) - 1;
-    
+    int[] tree;
+    int size;
+
     public BinaryArrayTree() {
-        final int DEFAULT_CAPACITY = limit ; //makes the array size 2^6 - 1 = 63 which equals a full array of 6 levels
-        int size = 0;
-        Arrays[] binaryArrayTree = new Arrays [DEFAULT_CAPACITY];
+        this(16); // Default capacity
     }
 
-    public int findLeftChild(int n) {
-        return (2 * n + 1);
-    }
-
-    public int findRightChild(int n) {
-        return (2 * n + 2);
+    public BinaryArrayTree(int capacity) {
+        this.tree = new int[capacity];
+        this.size = 0;
     }
 
     public void insert(int item) {
-        if (size >= DEFAULT_CAPACITY) {
-            System.out.println("Array is full, please make more room");
+        if (size >= tree.length) {
+            expandTree();
         }
-        else {. //index starts at 0 and adds elements as a complete tree would.
-            binaryArrayTree[size] = item;    
-            size++;
+        if (size == 0) {
+            tree[0] = item; // Insert the first element at the root
+        } else {
+            insertRecursive(item, 0); // Call the recursive insert method
         }
+        size++;
+    }
 
+    private void insertRecursive(int item, int index) {
+        if (item <= tree[index]) {
+            // Insert in the left subtree
+            int leftChildIndex = leftChild(index);
+            if (leftChildIndex < tree.length && tree[leftChildIndex] == 0) {
+                tree[leftChildIndex] = item; // Insert the item
+            } else {
+                insertRecursive(item, leftChildIndex); // Recursively insert in the left subtree
+            }
+        } else {
+            // Insert in the right subtree
+            int rightChildIndex = rightChild(index);
+            if (rightChildIndex < tree.length && tree[rightChildIndex] == 0) {
+                tree[rightChildIndex] = item; // Insert the item
+            } else {
+                insertRecursive(item, rightChildIndex); // Recursively insert in the right subtree
+            }
+        }
+    }
+
+    private void expandTree() {
+        int[] newTree = new int[tree.length * 2];
+        System.arraycopy(tree, 0, newTree, 0, tree.length);
+        tree = newTree;
+    }
+
+    private int leftChild(int parentIndex) {
+        return 2 * parentIndex + 1;
+    }
+
+    private int rightChild(int parentIndex) {
+        return 2 * parentIndex + 2;
     }
 
     public String toString() {
-        String output;
-        for(int i = 0; i <= binaryArrayTree.length(); i++) {
-            output = binaryArrayTree.getElement(i);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < size; i++) {
+            result.append(tree[i]).append(", ");
         }
-        return Arrays.toString();
+        return result.toString();
     }
-
-    public int getElement(int output) {
-        return output;
-    }
-} 
+}

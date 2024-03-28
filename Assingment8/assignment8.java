@@ -1,6 +1,14 @@
 public class assignment8 {
-        private int[] array = new int[17];
+        private int[] array;
         private int collisionCounter = 0;
+
+        public assignment8() {
+            this(25);
+        }
+
+        public assignment8(int capacity) {
+            this.array = new int[capacity];
+        }
 
         public void insert(int element) {
              
@@ -8,7 +16,7 @@ public class assignment8 {
 
             while(array[index] != 0) {
                 index = ((index + 1) % array.length);
-                collisionCounter++;
+                collisionCounter++;  //counter increments because that index of the array is not 0 (it has something in it)
             }
             array[index] = element;
         }

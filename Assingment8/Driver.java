@@ -4,6 +4,8 @@ public class Driver {
     assignment8 problem2 = new assignment8(17);
     assignment8 problem4 = new assignment8(16);
     assignment8 problem5 = new assignment8(16);
+    HashIndexChecker hasher1 = new HashIndexChecker(17);
+    HashIndexChecker hasher2 = new HashIndexChecker(16);
 
     problem1.insert(10);
     problem1.insert(20);
@@ -61,5 +63,15 @@ public class Driver {
     System.out.println("Number of collisions: " + problem5.getCollisionCounter());
     System.out.println();
 
+    //calling the HashIndexChecker findIndex method the find the index of elements 1 to 1000 and printing the results
+    for(int i = 1; i <= 1000; i++) {
+        hasher1.findIndex(i);
+    }
+    System.out.println(hasher1.toString());
+
+    for(int i = 1; i <= 1000; i++) {
+        hasher2.findIndex(i);
+    }
+    System.out.println(hasher2.toString());
     }    
 }

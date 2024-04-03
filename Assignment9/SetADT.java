@@ -1,37 +1,35 @@
 package Assignment9;
 
+import java.util.Arrays;
+
 public class SetADT {
     private int[] elements;
     private int size;
 
-    public SetADT() {
-        elements = new int[10];
+    public SetADT(int capacity) {
+        elements = new int[capacity];
         size = 0;
     }
 
+    public SetADT() {
+        this(10);
+    }
+
     public void add(int element) {
-        if (!contains(element)) {
-            if (size == elements.length) {
-                resize();
-            }
+        if(!contains(element)) {
             elements[size] = element;
             size++;
         }
     }
 
     public void remove(int element) {
-        int index = -1;
-        for (int i = 0; i < size; i++) {
-            if (elements[i] == element) {
-                index = i;
-                break;
+        for(int i = 0; i < size; i++) {
+            if(elements[i] == element) {
+                for(int j = i; j < size - 1; j++) {
+                    elements[j] = elements[j + 1];
+                }
+                size--;
             }
-        }
-        if (index != -1) {
-            for (int i = index; i < size - 1; i++) {
-                elements[i] = elements[i + 1];
-            }
-            size--;
         }
     }
 
@@ -42,14 +40,6 @@ public class SetADT {
             }
         }
         return false;
-    }
-
-    private void resize() {
-        int[] newElements = new int[elements.length * 2];
-        for (int i = 0; i < size; i++) {
-            newElements[i] = elements[i];
-        }
-        elements = newElements;
     }
 
     public String toString() {
@@ -63,4 +53,5 @@ public class SetADT {
         result += "}";
         return result;
     }
+
 }

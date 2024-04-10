@@ -1,7 +1,5 @@
 package Assignment9;
 
-import java.util.Arrays;
-
 public class SetADT {
     private int[] elements;
     private int size;
